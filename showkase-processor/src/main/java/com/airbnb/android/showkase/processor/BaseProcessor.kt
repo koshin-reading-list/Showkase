@@ -19,6 +19,7 @@ import javax.tools.Diagnostic
 /**
  * Creates a unified abstraction for processors of both KSP and java annotation processing.
  */
+// 不太清楚为啥要用 x processing，特别是 composeable function 仅支持 kotlin，直接使用 ksp 就完事了。
 abstract class BaseProcessor(
     val kspEnvironment: SymbolProcessorEnvironment? = null
 ) : AbstractProcessor(), SymbolProcessor {

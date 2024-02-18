@@ -9,6 +9,7 @@ data class ShowkaseBrowserComponent(
     val group: String,
     val componentName: String,
     val componentKDoc: String,
+    // 这个是实际的 Component 的 function
     val component: @Composable () -> Unit,
     val styleName: String? = null,
     val isDefaultStyle: Boolean = false,

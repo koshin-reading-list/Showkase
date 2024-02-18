@@ -54,6 +54,7 @@ internal fun ComponentCardTitle(componentName: String) {
     )
 }
 
+// 卡片的容器，不能正常展示图片？
 @Composable
 internal fun ComponentCard(
     metadata: ShowkaseBrowserComponent,
@@ -64,6 +65,7 @@ internal fun ComponentCard(
     Card {
         Box {
             Column(modifier = composableModifier) {
+                // 这一步，将去渲染实际的 UI
                 metadata.component()
             }
             // Need to add this as part of the stack so that we can intercept the touch of the 

@@ -6,4 +6,5 @@ package com.airbnb.android.showkase.models
  * "createShowkaseBrowserIntent" that allows you to start the ShowkaseBrowser and 
  * "getShowkaseMetadata" that gives you access to all the metadata that's available to Showkase.
  */
+// 不太常见的思路，只定义了一个 API 入口，使用 extension 的方式去实现。
 object Showkase

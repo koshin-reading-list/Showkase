@@ -15,12 +15,14 @@ import com.airbnb.android.showkase.models.clearActiveSearch
 import com.airbnb.android.showkase.models.update
 import java.util.Locale
 
+// MutableState 作为参数类型这种写法不应该
 @Composable
 internal fun ShowkaseCategoriesScreen(
     showkaseBrowserScreenMetadata: MutableState<ShowkaseBrowserScreenMetadata>,
     navController: NavHostController,
     categoryMetadataMap: Map<ShowkaseCategory, Int>
 ) {
+    // 强转为 AppCompatActivity 也不应该，最多是 Actvity
     val activity = LocalContext.current as AppCompatActivity
     LazyColumn {
         items(
@@ -31,6 +33,7 @@ internal fun ShowkaseCategoriesScreen(
                     .lowercase(defaultLocale)
                     .replaceFirstChar { it.titlecase(defaultLocale) }
 
+                // 最外层的仅展示 Group 名称
                 SimpleTextCard(
                     text = "$title ($categorySize)",
                     onClick = {
@@ -62,6 +65,7 @@ internal fun ShowkaseCategoriesScreen(
     }
 }
 
+// 这里一定要使用 activity.finish 吗，不能一直向上传递进而 pop 掉所有页面？
 private fun goBackFromCategoriesScreen(
     activity: AppCompatActivity,
     showkaseBrowserScreenMetadata: MutableState<ShowkaseBrowserScreenMetadata>

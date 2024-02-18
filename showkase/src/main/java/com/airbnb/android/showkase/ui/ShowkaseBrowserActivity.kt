@@ -16,6 +16,7 @@ import com.airbnb.android.showkase.models.ShowkaseElementsMetadata
  * The activity that's responsible for showing all the UI elements that were annotated
  * with the Showkase related annotations.
  */
+// 实际的 showkase 的展示类，这里其实不需要用 AppCompatActivity
 class ShowkaseBrowserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

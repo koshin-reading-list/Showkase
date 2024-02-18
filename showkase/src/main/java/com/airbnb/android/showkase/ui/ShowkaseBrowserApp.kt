@@ -65,6 +65,7 @@ import com.airbnb.android.showkase.models.ShowkaseCurrentScreen
 import com.airbnb.android.showkase.models.insideGroup
 import com.airbnb.android.showkase.ui.SemanticsUtils.lineCountVal
 
+// 这里是最终的 Showkase 的 UI 实现类
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 internal fun ShowkaseBrowserApp(
@@ -90,6 +91,7 @@ internal fun ShowkaseBrowserApp(
         LocalInspectionMode provides true,
         // This is added to make sure that the navigation of the ShowkaseBrowser does not break
         // when one of the previews has a back press handler in the implementation of the component.
+        // 这一步挺需要的，避免点击返回的时候整个返回了
         LocalOnBackPressedDispatcherOwner provides backPressedDispatcherOwner
     ) {
         val navController = rememberNavController()
@@ -407,6 +409,7 @@ private fun startDestination(
         ShowkaseCurrentScreen.SHOWKASE_CATEGORIES.name
 }
 
+// 按照 group -> item 层级配置页面路由
 private fun NavGraphBuilder.navGraph(
     navController: NavHostController,
     showkaseBrowserScreenMetadata: MutableState<ShowkaseBrowserScreenMetadata>,
@@ -512,6 +515,7 @@ private fun NavGraphBuilder.typographyNavGraph(
     }
 }
 
+// 根路由
 private fun NavGraphBuilder.fullNavGraph(
     navController: NavHostController,
     groupedComponentMap: Map<String, List<ShowkaseBrowserComponent>>,
